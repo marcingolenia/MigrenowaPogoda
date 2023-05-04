@@ -9,10 +9,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Quartz" Version="3.6.2" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Mailjet.Client">
-      <HintPath>..\..\..\..\.nuget\packages\mailjet.api\3.0.0\lib\netstandard1.1\Mailjet.Client.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Mailjet.Api" Version="3.0.0" />
   </ItemGroup>
 </Project>

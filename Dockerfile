@@ -3,7 +3,8 @@ WORKDIR /app
 # BUILD
 COPY src/*/*.fsproj ./
 RUN for file in $(ls *.fsproj); do mkdir -p src/${file%.*}/ && mv $file src/${file%.*}/; done
-
+COPY tests/*/*.fsproj ./
+RUN for file in $(ls *.fsproj); do mkdir -p tests/${file%.*}/ && mv $file tests/${file%.*}/; done
 COPY *.sln ./
 RUN dotnet restore
 COPY ./ ./

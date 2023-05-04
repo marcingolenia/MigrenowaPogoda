@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DD9D5F4E-D31
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{6745809B-84AB-493F-A758-9A1709471148}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Learning", "Learning\Learning.fsproj", "{67733806-B6C0-4B80-B72F-56FB8D820149}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Learning", "tests\Learning\Learning.fsproj", "{67733806-B6C0-4B80-B72F-56FB8D820149}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
