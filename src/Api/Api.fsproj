@@ -3,6 +3,16 @@
     <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="NoonJobExecution.fs" />
+    <Compile Include="QuartzHosting.fs" />
     <Compile Include="Program.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Quartz" Version="3.6.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Mailjet.Client">
+      <HintPath>..\..\..\..\.nuget\packages\mailjet.api\3.0.0\lib\netstandard1.1\Mailjet.Client.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>
