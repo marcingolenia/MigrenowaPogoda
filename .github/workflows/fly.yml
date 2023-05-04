@@ -10,10 +10,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl auth login -t ${{ secrets.FLY_API_TOKEN }}
-      - run: flyctl secrets set MJ_APIKEY_PUBLIC=${{ secrets.MJ_APIKEY_PUBLIC }}
-      - run: flyctl secrets set MJ_APIKEY_PRIVATE=${{ secrets.MJ_APIKEY_PRIVATE }}
-      - run: flyctl secrets set VISUAL_CROSSING_WEATHER_KEY=${{ secrets.VISUAL_CROSSING_WEATHER_KEY }}
-      - run: flyctl deploy --remote-only
+      - run: |
+          flyctl secrets set MJ_APIKEY_PUBLIC=${{ secrets.MJ_APIKEY_PUBLIC }}
+          flyctl secrets set MJ_APIKEY_PRIVATE=${{ secrets.MJ_APIKEY_PRIVATE }}
+          flyctl secrets set VISUAL_CROSSING_WEATHER_KEY=${{ secrets.VISUAL_CROSSING_WEATHER_KEY }}
+          flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
