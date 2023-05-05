@@ -19,8 +19,6 @@ type PressureEvent =
     | PressureUp of decimal * decimal
     | HighPressure of decimal
 
-type Report = { intro: string }
-
 let execute (readPressures: unit -> decimal * decimal) (sendNotification: decimal -> PressureEvent -> Task) =
     let todaysPressure, tomorrowsPressure = readPressures ()
 
