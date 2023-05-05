@@ -6,7 +6,7 @@ open Quartz
 open Quartz.Impl
 open Quartz.Spi
 
-type JobFactory(job: unit -> Async<unit>) =
+type JobFactory(job: unit -> Task) =
     interface IJobFactory with
         member _.NewJob(bundle, _) =
             match bundle.JobDetail.JobType with
@@ -15,7 +15,7 @@ type JobFactory(job: unit -> Async<unit>) =
 
         member _.ReturnJob _ = ()
 
-type Service(job: unit -> Async<unit>) =
+type Service(job: unit -> Task) =
     let mutable scheduler: IScheduler = null
 
     interface IHostedService with

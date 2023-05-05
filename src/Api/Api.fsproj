@@ -3,6 +3,10 @@
     <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Engine.fs" />
+    <Compile Include="MailTemplate.fs" />
+    <Compile Include="MailSender.fs" />
+    <Compile Include="ForecastPressure.fs" />
     <Compile Include="NoonJobExecution.fs" />
     <Compile Include="QuartzHosting.fs" />
     <Compile Include="Program.fs" />
@@ -10,5 +14,6 @@
   <ItemGroup>
     <PackageReference Include="Quartz" Version="3.6.2" />
     <PackageReference Include="Mailjet.Api" Version="3.0.0" />
+    <PackageReference Include="FSharp.Data" Version="6.2.0" />
   </ItemGroup>
 </Project>

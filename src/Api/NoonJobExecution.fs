@@ -6,12 +6,11 @@ open Quartz
 let trigger =
     TriggerBuilder
         .Create()
-        .WithCronSchedule("0 0 * ? * *")//0 0 12 * * ?
+        .WithCronSchedule("0 0 18 * * ?")
         .Build()
 
-type Job(execute: unit -> Async<unit>) =
+type Job(execute: unit -> Task) =
     interface IJob with
-        member _.Execute _ =
-            execute() |> Async.StartAsTask :> Task
+        member _.Execute _ = execute()
 
 let job = JobBuilder.Create<Job>().Build()
