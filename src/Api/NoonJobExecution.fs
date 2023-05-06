@@ -6,7 +6,7 @@ open Quartz
 let trigger =
     TriggerBuilder
         .Create()
-        .WithCronSchedule("0 0 18 * * ?")
+        .WithCronSchedule("0 0 17 * * ?")
         .Build()
 
 type Job(execute: unit -> Task) =
