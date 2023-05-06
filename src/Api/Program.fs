@@ -4,8 +4,11 @@ open Microsoft.Extensions.DependencyInjection
 
 let builder = WebApplication.CreateBuilder()
 
+Engine.execute ForecastPressure.forecast MailSender.send
 builder.Services.AddHostedService(fun _ ->
-    QuartzHosting.Service(fun () -> Engine.execute ForecastPressure.forecast MailSender.send))
+    QuartzHosting.Service(fun () ->
+        printfn "Starting execution of ForecastPressure"
+        Engine.execute ForecastPressure.forecast MailSender.send))
 |> ignore
 
 let app = builder.Build()

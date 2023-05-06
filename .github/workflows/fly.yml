@@ -14,6 +14,7 @@ jobs:
           flyctl secrets set MJ_APIKEY_PUBLIC=${{ secrets.MJ_APIKEY_PUBLIC }}
           flyctl secrets set MJ_APIKEY_PRIVATE=${{ secrets.MJ_APIKEY_PRIVATE }}
           flyctl secrets set VISUAL_CROSSING_WEATHER_KEY=${{ secrets.VISUAL_CROSSING_WEATHER_KEY }}
+          flyctl secrets set MIGRENOWA_POGODA_MAILS=${{ secrets.MIGRENOWA_POGODA_MAILS }}
           flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}

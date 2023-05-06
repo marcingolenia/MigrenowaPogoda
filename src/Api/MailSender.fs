@@ -17,7 +17,7 @@ let buildContent bestPressure (pressureEvent: PressureEvent) =
     Intro
     + match pressureEvent with
       | PressureDrop (today, tomorrow) ->
-          $"Spadnie znacznie z {today}hPa na {tomorrow} hPa. Zalecamy poranny spacer i kawę. Zadbaj o sen, unikaj stresu i nawadniaj się."
+          $"Spadnie znacznie z {today} hPa na {tomorrow} hPa. Zalecamy poranny spacer i kawę. Zadbaj o sen, unikaj stresu i nawadniaj się."
       | PressureUp (today, tomorrow) ->
           $"Wzrośnie znacznie z {today} hPa na {tomorrow} hPa. Zadbaj o sen, unikaj stresu i nawadniaj się."
       | HighPressure pressure ->
