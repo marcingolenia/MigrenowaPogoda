@@ -7,10 +7,10 @@ open Microsoft.FSharp.Core
 let BestPressure = 1013
 
 [<Literal>]
-let HpaMaxDifference = 6
+let HpaMaxDifference = 8
 
 let lowPressureLimit = BestPressure - HpaMaxDifference
-let highPressureLimit = BestPressure + HpaMaxDifference
+let highPressureLimit = BestPressure + HpaMaxDifference + 5
 
 
 type PressureEvent =
@@ -26,7 +26,7 @@ let execute (readPressures: unit -> decimal * decimal) (sendNotification: decima
         match todaysPressure - tomorrowsPressure with
         | difference when difference > HpaMaxDifference -> Some(PressureDrop(todaysPressure, tomorrowsPressure))
         | difference when difference < -HpaMaxDifference -> Some(PressureUp(todaysPressure, tomorrowsPressure))
-        | _ when tomorrowsPressure > highPressureLimit -> Some(HighPressure tomorrowsPressure)
+        | _ when tomorrowsPressure > highPressureLimit-> Some(HighPressure tomorrowsPressure)
         | _ when tomorrowsPressure < lowPressureLimit -> Some(LowPressure tomorrowsPressure)
         | _ -> None
 
