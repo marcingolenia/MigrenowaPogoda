@@ -13,19 +13,15 @@ let Intro =
 Zła wiadomość, niestety jutro ciśnienie: 
 """
 
-let buildContent bestPressure (pressureEvent: PressureEvent) =
+let buildContent (pressureEvent: PressureEvent) =
     Intro
     + match pressureEvent with
       | PressureDrop (today, tomorrow) ->
           $"Spadnie znacznie z {today} hPa na {tomorrow} hPa. Zalecamy poranny spacer i kawę. Zadbaj o sen, unikaj stresu i nawadniaj się."
       | PressureUp (today, tomorrow) ->
           $"Wzrośnie znacznie z {today} hPa na {tomorrow} hPa. Zadbaj o sen, unikaj stresu i nawadniaj się."
-      | HighPressure pressure ->
-          $"Będzie wysokie {pressure} hPa, gdzie {bestPressure} hPa jest optymalne. Zadbaj o sen, unikaj stresu i nawadniaj się."
-      | LowPressure pressure ->
-          $"Będzie niskie {pressure} hPa, gdzie {bestPressure} hPa jest optymalne. Zalecamy poranny spacer i kawę. Zadbaj o sen, unikaj stresu  i nawadniaj się."
 
-let send bestPressure (pressureEvent: PressureEvent) =
+let send (pressureEvent: PressureEvent) =
     let recipients =
         Environment.GetEnvironmentVariable "MIGRENOWA_POGODA_MAILS"
         |> JsonConvert.DeserializeObject<string list>
@@ -41,7 +37,7 @@ let send bestPressure (pressureEvent: PressureEvent) =
         TransactionalEmailBuilder()
             .WithFrom(SendContact "marcingolenia@gmail.com")
             .WithSubject($"Migrenowa Pogoda, zadbaj o siebie jutro! ({DateTime.Today.AddDays 1:``yyyy-MM-dd``})")
-            .WithHtmlPart(MailTemplate.withTextContent (buildContent bestPressure pressureEvent))
+            .WithHtmlPart(MailTemplate.withTextContent (buildContent pressureEvent))
             .WithTo(recipients |> List.map SendContact)
             .Build()
 
